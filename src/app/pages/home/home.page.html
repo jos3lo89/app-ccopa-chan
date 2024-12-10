@@ -20,31 +20,42 @@
   <div class="categorias">
     <ion-grid>
       <ion-row>
+        @for (item of products; track $index) {
         <ion-col size="6" size-md="4" size-lg="2"
-          ><ion-button class="boton">Categoria</ion-button></ion-col
-        >
+          ><ion-button class="boton" [routerLink]="['/productos', item.category]"
+            >{{item.category}}</ion-button
+          ></ion-col
+        >}
       </ion-row>
     </ion-grid>
   </div>
 
   <div>
     <h2 class="section-title">OFERTAS <a routerLink="/tienda">ver más</a></h2>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6">
-          <ion-card>
+    <ion-list class="horizontal-list">
+      <ion-grid>
+        @for (item of products; track $index) {
+        <ion-card class="box-region">
+          <ion-card-content>
             <img
               alt="Producto"
               src="https://ionicframework.com/docs/img/demos/card-media.png"
             />
-            <ion-card-header>
-              <ion-card-title>Name Product</ion-card-title>
-              <ion-card-subtitle>Precio</ion-card-subtitle>
-            </ion-card-header>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          </ion-card-content>
+          <ion-card-header>
+            <ion-card-title>{{item.name}}</ion-card-title>
+            <div class="contenido">
+              <ion-card-subtitle>{{item.price}}</ion-card-subtitle>
+              @if (item.discount !== 0) {
+              <!-- <span> {{item.discount}}% </span> -->
+              <ion-card-subtitle>{{item.precioConDescuento}}</ion-card-subtitle>
+              }
+            </div>
+          </ion-card-header>
+        </ion-card>
+        }
+      </ion-grid>
+    </ion-list>
   </div>
 
   <div class="section-title">

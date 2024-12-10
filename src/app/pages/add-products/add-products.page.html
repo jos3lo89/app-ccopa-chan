@@ -8,9 +8,10 @@
   <ion-card>
     <ion-card-title>
       <form [formGroup]="form" (ngSubmit)="guardarP()">
-        <ion-item>
-          <ion-label position="floating">Nombre: </ion-label>
-          <ion-input type="text" formControlName="name"></ion-input>
+        <ion-item button>
+          <ion-label>Nombre del producto:</ion-label>
+          <ion-text (click)="abrirModalNombre()">{{ name || 'Nombre' }}</ion-text>
+          
         </ion-item>
 
         <ion-item>
@@ -25,12 +26,35 @@
 
         <ion-item>
           <ion-label position="floating">Precio:</ion-label>
-          <ion-input type="number" formControlName="price" placeholder="0"></ion-input>
+          <ion-input
+            type="number"
+            formControlName="price"
+            placeholder="0"
+          ></ion-input>
         </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Descripción:</ion-label>
+          <ion-input (click)="agregarDescripcion()"></ion-input>
+        </ion-item>
+
+        <!-- Mostrar descripciones agregadas -->
+        <div
+          *ngIf="form.value.description && form.value.description.length > 0"
+        >
+          <ion-item *ngFor="let desc of form.value.description">
+            <ion-label>{{ desc.name }}: {{ desc.details }}</ion-label>
+          </ion-item>
+        </div>
+
+        <div class="image" *ngIf="form.value.image">
+          <img [src]="form.value.image" />
+        </div>
 
         <div class="btns">
           <ion-item>
-            <ion-button (click)="guardarP()">Agregar</ion-button>
+            <ion-button (click)="takeImage()">Seleccionar Imagen</ion-button>
+            <ion-button type="submit">Agregar Producto</ion-button>
           </ion-item>
         </div>
       </form>
