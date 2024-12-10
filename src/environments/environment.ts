@@ -6,12 +6,13 @@ export const environment = {
   production: false,
 
   firebaseConfig : {
-    apiKey: "AIzaSyBAvIAgVukk-hC8fSxRKp8QFM_MI1bMLH8",
-    authDomain: "tienda-app-e88bd.firebaseapp.com",
-    projectId: "tienda-app-e88bd",
-    storageBucket: "tienda-app-e88bd.firebasestorage.app",
-    messagingSenderId: "1081358632740",
-    appId: "1:1081358632740:web:6f16d26540714b4c6855b1"
+    projectId: 'pruebaintegracion-eec23',
+    appId: '1:170625350085:web:cc5c73f52f148406d4f3ac',
+    storageBucket: 'pruebaintegracion-eec23.appspot.com',
+    locationId: 'us-central',
+    apiKey: 'AIzaSyBdqjDHpJO6Iz-ThmCWTQ0MsBLzI8qotww',
+    authDomain: 'pruebaintegracion-eec23.firebaseapp.com',
+    messagingSenderId: '170625350085',
   }
 };
 
