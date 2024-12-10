@@ -1,18 +1,15 @@
 <ion-app>
-  <ion-menu side="start" menuId="m1" contentId="main-content">
+  <ion-menu side="start" menuId="m1" contentId="main-content" type="overlay">
     <ion-header>
-      <ion-toolbar>
-        <div class="menu-section">
-          <div class="menu-content">
-            <img src="assets/img/logo.png" alt="Logo" class="logo">
-            <h1>Menu</h1>
-          </div>
+      <div class="menu-section">
+        <div class="menu-content">
+          <img src="assets/img/logo.png" alt="Logo" class="logo" />
+          <h1>Menu</h1>
         </div>
-      </ion-toolbar>
+      </div>
     </ion-header>
     <ion-content>
       <ion-list>
-        
         <ion-item routerLink="/home">
           <ion-icon slot="start" name="home-outline"></ion-icon>
           <ion-label>Inicio</ion-label>
@@ -30,16 +27,29 @@
           <ion-label>Blog</ion-label>
         </ion-item>
 
-        
         <ion-item routerLink="/carrito" *ngIf="isAuthenticated">
           <ion-icon slot="start" name="cart-outline"></ion-icon>
           <ion-label>Ir al carrito</ion-label>
         </ion-item>
-        <ion-item routerLink="/registro">
-          <ion-icon slot="start" name="person-outline"></ion-icon>
-          <ion-label>Registro</ion-label>
-        </ion-item>
       </ion-list>
+
+      <ion-card
+        style="
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        @if (user) {
+
+        <ion-button color="danger" (click)="logout()">Cerrar sesión</ion-button>
+        } @else {
+
+        <ion-button (click)="pushRoute('/login')">Iniciar sesión</ion-button>
+
+        }
+      </ion-card>
     </ion-content>
   </ion-menu>
   <div class="ion-page" id="main-content">
