@@ -1,36 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>ACERINO PERÚ</ion-title>
+    <ion-title style="text-align: center">ACERINO PERÚ</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="inicio-section">
-    <div class="inicio-content">
-      <img src="assets/img/logo.png" alt="Logo" class="logo">
-      <h1>Registro</h1>
-    </div>
+  <div class="inicio-content">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <h1>Registro</h1>
   </div>
-  <ion-img src="assets/img/logo.png"></ion-img>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="register()"
+    style="margin-left: 15px; margin-right: 15px"
+  >
+    <ion-list>
+      <ion-input
+        formControlName="nombre"
+        label="Nombre"
+        label-placement="floating"
+        fill="solid"
+        placeholder="Ingrese su nombre"
+        type="text"
+      ></ion-input>
+      <br />
+      <ion-input
+        formControlName="apellido"
+        label="Apellido"
+        label-placement="floating"
+        fill="solid"
+        placeholder="Ingrese su apellido"
+        type="text"
+      ></ion-input>
+      <br />
+      <ion-input
+        formControlName="email"
+        label="Correo Electronico"
+        label-placement="floating"
+        fill="solid"
+        placeholder="Ingrese su correo"
+        type="email"
+      ></ion-input>
+      <br />
+      <ion-input
+        formControlName="pwd"
+        label="Contraseña"
+        label-placement="floating"
+        fill="solid"
+        placeholder="Ingrese su contraseña"
+        type="password"
+      ></ion-input>
+      <br /><br />
+      <ion-button expand="full" type="submit">
+        <!-- Registrar -->
+        @if (isloadingSubmitBtn) {
+        <ion-spinner name="crescent"></ion-spinner>
 
-  <form (ngSubmit)="login()">
-    <ion-item>
-      <ion-label position="floating">Correo</ion-label>
-      <ion-input type="email" placeholder="Ingrese su correo" [(ngModel)]="correo" name="correo" required></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password" required></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-button expand="block" type="submit">Iniciar Sesión</ion-button>
-    </ion-item>
+        } @else { Registrar }
+      </ion-button>
+    </ion-list>
   </form>
-
-  <ion-item>
-    <p>¿No tienes una cuenta? <a routerLink="/login">Regístrate aquí</a></p>
-  </ion-item>
-  
+  <div class="footer">
+    <ion-button fill="none" routerLink="/login">Iniciar sesión</ion-button>
+  </div>
 </ion-content>
