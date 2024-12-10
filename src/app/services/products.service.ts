@@ -17,8 +17,8 @@ export class ProductsService {
       category: producto.category,
       price: producto.price,
       discount: producto.discount,
-      description: producto.description, 
-      image: producto.image 
+      description: producto.description,
+      image: producto.image,
     };
     return addDoc(referencia, productoData);
   }
