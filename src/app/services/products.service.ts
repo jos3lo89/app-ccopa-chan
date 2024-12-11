@@ -1,8 +1,20 @@
 import { inject, Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, getDocs } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  addDoc,
+  getDocs,
+  getDoc,
+  doc,
+} from '@angular/fire/firestore';
 import { Producto, ProductoDb } from '../interfaces/producto.module';
 import { Observable } from 'rxjs';
-import { getDownloadURL, getStorage, ref, uploadString } from '@angular/fire/storage';
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadString,
+} from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -43,8 +55,28 @@ export class ProductsService {
   }
 
   async uploadImage(path: string, data_url: string) {
-    return uploadString(ref(getStorage(), path), data_url, 'data_url').then(() => {
-      return getDownloadURL(ref(getStorage(), path));
+    return uploadString(ref(getStorage(), path), data_url, 'data_url').then(
+      () => {
+        return getDownloadURL(ref(getStorage(), path));
+      }
+    );
+  }
+
+  getProductWithId(id: string): Observable<ProductoDb> {
+    const coleccionReferencia = doc(this.firestore, `Productos2/${id}`);
+    return new Observable((observer) => {
+      getDoc(coleccionReferencia)
+        .then((querySnapShot) => {
+          const item = {
+            id: querySnapShot.id,
+            ...querySnapShot.data(),
+          } as ProductoDb;
+          observer.next(item);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+        });
     });
   }
 }

@@ -1,93 +1,127 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'registro',
-    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+    loadChildren: () =>
+      import('./pages/registro/registro.module').then(
+        (m) => m.RegistroPageModule
+      ),
   },
   {
     path: 'tienda',
-    loadChildren: () => import('./pages/tienda/tienda.module').then( m => m.TiendaPageModule)
+    loadChildren: () =>
+      import('./pages/tienda/tienda.module').then((m) => m.TiendaPageModule),
   },
   {
     path: 'nosotros',
-    loadChildren: () => import('./pages/nosotros/nosotros.module').then( m => m.NosotrosPageModule)
+    loadChildren: () =>
+      import('./pages/nosotros/nosotros.module').then(
+        (m) => m.NosotrosPageModule
+      ),
   },
   {
     path: 'blog',
-    loadChildren: () => import('./pages/blog/blog.module').then( m => m.BlogPageModule)
+    loadChildren: () =>
+      import('./pages/blog/blog.module').then((m) => m.BlogPageModule),
   },
   {
     path: 'carrito',
-    loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
+    loadChildren: () =>
+      import('./pages/carrito/carrito.module').then((m) => m.CarritoPageModule),
   },
   {
     path: 'arado',
-    loadChildren: () => import('./pages/arado/arado.module').then( m => m.AradoPageModule)
+    loadChildren: () =>
+      import('./pages/arado/arado.module').then((m) => m.AradoPageModule),
   },
   {
     path: 'construccion',
-    loadChildren: () => import('./pages/construccion/construccion.module').then( m => m.ConstruccionPageModule)
+    loadChildren: () =>
+      import('./pages/construccion/construccion.module').then(
+        (m) => m.ConstruccionPageModule
+      ),
   },
   {
     path: 'molino',
-    loadChildren: () => import('./pages/molino/molino.module').then( m => m.MolinoPageModule)
+    loadChildren: () =>
+      import('./pages/molino/molino.module').then((m) => m.MolinoPageModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'corte',
-    loadChildren: () => import('./pages/corte/corte.module').then( m => m.CortePageModule)
+    loadChildren: () =>
+      import('./pages/corte/corte.module').then((m) => m.CortePageModule),
   },
   {
     path: 'motores',
-    loadChildren: () => import('./pages/motores/motores.module').then( m => m.MotoresPageModule)
+    loadChildren: () =>
+      import('./pages/motores/motores.module').then((m) => m.MotoresPageModule),
   },
   {
     path: 'picadoras',
-    loadChildren: () => import('./pages/picadoras/picadoras.module').then( m => m.PicadorasPageModule)
+    loadChildren: () =>
+      import('./pages/picadoras/picadoras.module').then(
+        (m) => m.PicadorasPageModule
+      ),
   },
   {
     path: 'siembra',
-    loadChildren: () => import('./pages/siembra/siembra.module').then( m => m.SiembraPageModule)
+    loadChildren: () =>
+      import('./pages/siembra/siembra.module').then((m) => m.SiembraPageModule),
   },
   {
     path: 'drones',
-    loadChildren: () => import('./pages/drones/drones.module').then( m => m.DronesPageModule)
+    loadChildren: () =>
+      import('./pages/drones/drones.module').then((m) => m.DronesPageModule),
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () =>
+      import('./pages/inicio/inicio.module').then((m) => m.InicioPageModule),
   },
   {
     path: 'add-products',
-    loadChildren: () => import('./pages/add-products/add-products.module').then( m => m.AddProductsPageModule)
+    loadChildren: () =>
+      import('./pages/add-products/add-products.module').then(
+        (m) => m.AddProductsPageModule
+      ),
   },
   {
     path: 'productos/:category',
-    loadChildren: () => import('./pages/productos/productos.module').then( m => m.ProductosPageModule)
+    loadChildren: () =>
+      import('./pages/productos/productos.module').then(
+        (m) => m.ProductosPageModule
+      ),
   },
-
-  
+  {
+    path: 'product-details',
+    loadChildren: () =>
+      import('./pages/product-details/product-details.module').then(
+        (m) => m.ProductDetailsPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

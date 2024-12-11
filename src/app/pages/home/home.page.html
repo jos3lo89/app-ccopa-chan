@@ -22,7 +22,9 @@
       <ion-row>
         @for (item of products; track $index) {
         <ion-col size="6" size-md="4" size-lg="2"
-          ><ion-button class="boton" [routerLink]="['/productos', item.category]"
+          ><ion-button
+            class="boton"
+            [routerLink]="['/productos', item.category]"
             >{{item.category}}</ion-button
           ></ion-col
         >}
@@ -35,12 +37,9 @@
     <ion-list class="horizontal-list">
       <ion-grid>
         @for (item of products; track $index) {
-        <ion-card class="box-region">
+        <ion-card class="box-region" (click)="goToDetails(item.id)">
           <ion-card-content>
-            <img
-              alt="Producto"
-              src="https://ionicframework.com/docs/img/demos/card-media.png"
-            />
+            <img alt="Producto" [src]="item.image" />
           </ion-card-content>
           <ion-card-header>
             <ion-card-title>{{item.name}}</ion-card-title>

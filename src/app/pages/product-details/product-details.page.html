@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1" auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Detalles del Producto</ion-title>
+
+    <!-- <ion-card
+      slot="end"
+      style="margin-left: auto; margin-right: auto; max-width: 50px"
+    > -->
+    <ion-button slot="end" color="secondary" (click)="backBtn()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <!-- </ion-card> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="product">
+    <div class="img-box">
+      <img [src]="product.image" alt="{{ product.name }}" />
+    </div>
+
+    <ion-card-header>
+      <ion-card-title>{{ product.name }}</ion-card-title>
+      <ion-card-subtitle>Categoría: {{ product.category }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Descripción:</strong></p>
+      <ul>
+        <li *ngFor="let detail of product.description">
+          <strong>{{ detail.name }}:</strong> {{ detail.details }}
+        </li>
+      </ul>
+
+      <p><strong>Precio:</strong> S/ {{ product.price }}</p>
+      <p *ngIf="product.discount > 0">
+        <strong>Descuento:</strong> {{ product.discount }}%
+      </p>
+
+      <p *ngIf="product.discount > 0">
+        <strong>Precio Final:</strong> S/ {{ product.price - (product.price *
+        product.discount / 100) }}
+      </p>
+    </ion-card-content>
+
+    <!-- <ion-button expand="block" color="primary"> Comprar Ahora </ion-button>
+    <ion-button expand="block" fill="outline" color="secondary">
+      Añadir al Carrito
+    </ion-button> -->
+  </ion-card>
+
+  <ion-card
+    *ngIf="!product"
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    "
+  >
+    <ion-spinner></ion-spinner>
+  </ion-card>
+</ion-content>
