@@ -6,9 +6,11 @@ import {
   getDocs,
   getDoc,
   doc,
+  query,
+  where,
 } from '@angular/fire/firestore';
 import { Producto, ProductoDb } from '../interfaces/producto.module';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import {
   getDownloadURL,
   getStorage,
@@ -79,4 +81,24 @@ export class ProductsService {
         });
     });
   }
+
+  // gettingProdcutWithCategory(category: string) {
+  //   const collRef = collection(this.firestore, 'Productos2');
+  //   const q = query(collRef, where('category', '==', category));
+
+  //   return new Observable((observer) => {
+  //     getDocs(q)
+  //       .then((querySnapshot) => {
+  //         const items = querySnapshot.docs.map((doc) => {
+  //           return { id: doc.id, ...doc.data() } as ProductoDb;
+  //         });
+
+  //         observer.next(items);
+  //         observer.complete();
+  //       })
+  //       .catch((error) => {
+  //         observer.error(error);
+  //       });
+  //   });
+  // }
 }
