@@ -7,30 +7,49 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-title>
-      <form [formGroup]="form" (ngSubmit)="guardarP()">
-        <ion-item>
-          <ion-label position="floating">Nombre: </ion-label>
-          <ion-input type="text" formControlName="name"></ion-input>
+      <form (ngSubmit)="guardarP()">
+        <ion-item button (click)="abrirModalNombre()">
+          <ion-label>Nombre del producto:</ion-label>
+          <ion-text>{{ name || 'Ingrese el nombre' }}</ion-text>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Categoria: </ion-label>
-          <ion-input type="text" formControlName="category"></ion-input>
+        <ion-item button (click)="abrirModalCategoria()">
+          <ion-label>Categoría:</ion-label>
+          <ion-text>{{ category || 'Ingrese la categoría' }}</ion-text>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Descuento: </ion-label>
-          <ion-input type="number" formControlName="discount"></ion-input>
+        <ion-item button (click)="abrirModalDescuento()">
+          <ion-label>Descuento:</ion-label>
+          <ion-text
+            >{{ discount !== null ? discount + '%' : 'Ingrese el descuento'
+            }}</ion-text
+          >
         </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Precio:</ion-label>
-          <ion-input type="number" formControlName="price" placeholder="0"></ion-input>
+        <ion-item button (click)="abrirModalPrecio()">
+          <ion-label>Precio:</ion-label>
+          <ion-text
+            >{{ price !== null ? price : 'Ingrese el precio' }}</ion-text
+          >
         </ion-item>
+
+        <ion-item button (click)="agregarDescripcion()">
+          <ion-label>Descripción:</ion-label>
+        </ion-item>
+
+        <div *ngIf="description.length > 0">
+          <ion-item *ngFor="let desc of description">
+            <ion-label>{{ desc.name }}: {{ desc.details }}</ion-label>
+          </ion-item>
+        </div>
+        <div class="image" *ngIf="image">
+          <img [src]="image" alt="Imagen del producto" />
+        </div>
 
         <div class="btns">
           <ion-item>
-            <ion-button (click)="guardarP()">Agregar</ion-button>
+            <ion-button (click)="takeImage()">Agregar Imagen</ion-button>
+            <ion-button type="submit">Guardar Producto</ion-button>
           </ion-item>
         </div>
       </form>

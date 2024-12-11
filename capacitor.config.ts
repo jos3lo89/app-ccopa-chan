@@ -7,3 +7,15 @@ const config: CapacitorConfig = {
 };
 
 export default config;
+
+
+// capacitor.config.ts
+module.exports = {
+  plugins: {
+    Camera: {
+      allowEditing: true,
+      quality: 90,
+      resultType: 'DataUrl',
+    },
+  },
+};
